@@ -1,14 +1,14 @@
 class Flowers {
-  constructor(type, cost, amount) {
+  constructor(amount, type, cost) {
+    this.amount = amount;
     this.type = type;
     this.cost = cost;
-    this.amount = amount;
   }
   decribe() {
-    return `This ${this.type} cost ${this.cost} for ${this.amount}`;
+    return `a ${this.amount} ${this.type} will cost ${this.cost}`;
   }
 }
-
+//I created a class for flowers to order by amount, flower type, and cost,
 class Cards {
   constructor(occasion) {
     this.occasion = occasion;
@@ -17,3 +17,54 @@ class Cards {
     return `Add ${this.occasion} to the flower order`;
   }
 }
+//I created a class to add cards to the order by occasion
+class Menu {
+  constructor() {
+    this.flowers = [];
+  }
+  start() {
+    let selection = this.showFlowerOrderOptions();
+    while (selection != 0)
+      switch (selection) {
+        case "1":
+          this.placeOrder();
+          break;
+        case "2":
+          this.addCard();
+          break;
+        case "3":
+          this.viewOrder();
+          break;
+        case "4":
+          this.deleteOrder();
+      }
+    selection = showFlowerOrderOptions();
+  }
+  showFlowerOrderOptions() {
+    return prompt(`
+      1) Place Order
+      2) Add Card
+      3) View Order
+      4)Delete Order
+      `);
+  }
+  showFlowerOrderOptions(orderInfo) {
+    return prompt(`
+      1) Add to order
+      2) Delete Order
+      ${orderInfo}
+      `);
+  }
+  displayOrder() {
+    let orderString = "";
+    for (let i = 0; i < this.flowers.length; i++) {
+      orderString += i + ") " + this.flowers[i].type;
+    }
+    alert(orderString);
+  }
+  createOrder() {
+    let order = promt("Enter Flower Order");
+  }
+}
+let menu = new Menu();
+menu.start();
