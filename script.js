@@ -24,7 +24,7 @@ class Menu {
     //method to place order, prompt for flower, promt for amount
     let flowerType = prompt("Enter Flower Type:");
     let flowerAmount = prompt("Enter How Many you would like:");
-    this.orders.push(new FlowerOrder(flowerType, flowerAmount)); //Adding the car to the array with the push method
+    this.orders.push(new FlowerOrder(flowerType, flowerAmount)); //Adding the order to the array with the push method
   }
   deleteOrder() {
     //Delete order prompt to enter which index to delete
