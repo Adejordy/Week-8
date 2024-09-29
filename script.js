@@ -1,13 +1,8 @@
-//Flower order Menu
-
 //class flower order
 class FlowerOrder {
   constructor(type, amount) {
     this.type = type;
     this.amount = amount;
-  }
-  describe() {
-    return `I want ${this.type} and I want ${this.amount} of them`;
   }
 }
 //class menu
@@ -15,7 +10,7 @@ class Menu {
   constructor() {
     this.orders = []; //order array
   }
-  //see menu create menu prompt   //make main menu, make visible with a prompt
+  //Menu prompt, to make main menu visible
   showFlowerOrdersMenu() {
     return prompt(`
       Selection:
@@ -25,30 +20,46 @@ class Menu {
       3) View Order
       `);
   }
-
   placeOrder() {
-    //place order
-    //promt for flower
+    //method to place order, prompt for flower, promt for amount
     let flowerType = prompt("Enter Flower Type:");
-    //promt for amount
     let flowerAmount = prompt("Enter How Many you would like:");
-    this.orders.push(new FlowerOrder(flowerType, flowerAmount));
+    this.orders.push(new FlowerOrder(flowerType, flowerAmount)); //Adding the car to the array with the push method
+  }
+  deleteOrder() {
+    //Delete order prompt to enter which index to delete
+    let orderIndex = prompt("Which Order Would You Like to Delete?");
+    this.orders.splice(orderIndex, 1); //splice method to delete
+  }
+  ViewOrder() {
+    //veiw order created variable and then looped through the lenght of the array, and then display the variable
+    let displayOrders = " ";
+    for (let i = 0; i < this.orders.length; i++) {
+      displayOrders += i + this.orders[i].length;
+    }
+    alert(displayOrders);
+  }
+  start() {
+    //start menu created new variable selections, made list match menu prompt, create switch case add the while loop to stop if option outside loop is pick it will exit menu.
+    let selection = this.showFlowerOrdersMenu();
+    while (selection != 0) {
+      switch (selection) {
+        case "1":
+          this.placeOrder();
+          break;
+        case "2":
+          this.deleteOrder();
+          break;
+        case "3":
+          this.ViewOrder();
+          break;
+        default:
+          selection = 0;
+      }
+      alert("Thank you!");
+    }
   }
 }
 
-//push created car into array
-
-//delete order
-//create orderIndex and prompt to enter which index to delete, find method to delete
-
-//veiw order
-//create variable and then loop through the lenght of the array, and then display the variable, create alert
-
-//start menu
-//create new variable selections, list is equal to mainmenu, create switch case add the while != 0
-
-let order1 = new FlowerOrder("Roses", "12");
-console.log(order1);
 let menu = new Menu();
-menu.placeOrder();
-//call all after creating
+menu.start(); //calling the start because it holds the options
